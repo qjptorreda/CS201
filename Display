@@ -1,0 +1,19 @@
+private void updateBookCount() {
+    DefaultTableModel model = (DefaultTableModel) tbl_displayTable.getModel();
+    jLabel1.setText(String.valueOf(model.getRowCount())); 
+}
+
+
+private void initializeBookCount() {
+    DefaultTableModel model = (DefaultTableModel) tbl_displayTable.getModel();
+    jLabel1.setText(String.valueOf(model.getRowCount())); 
+}
+
+
+btn_DisplayCount.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        updateBookCount();
+        JOptionPane.showMessageDialog(null, "Total number of books: " + jLabel1.getText());
+    }
+});
