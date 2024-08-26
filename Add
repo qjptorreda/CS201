@@ -1,0 +1,31 @@
+private void addBook() {
+        btn_Add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the text from the input fields
+                String title = txt_title.getText();
+                String isbn = txt_ISBN.getText();
+                String author = txt_Author.getText();
+                String genre = txt_Genre.getText();
+
+                // Confirm with the user before adding the book to the table
+                int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this book to the table?", "Confirm Add", JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    // Add the new book to the table
+                    DefaultTableModel model = (DefaultTableModel) tbl_displayTable.getModel();
+                    model.addRow(new Object[]{isbn, title, author, genre});
+
+                    // Update the number of books
+                    jLabel2.setText(String.valueOf(model.getRowCount()));
+
+                    // Clear the input fields
+                    txt_title.setText("");
+                    txt_ISBN.setText("");
+                    txt_Author.setText("");
+                    txt_Genre.setText("");
+                }
+            }
+        });
+        
+    }
