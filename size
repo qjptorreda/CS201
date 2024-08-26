@@ -1,0 +1,75 @@
+package size;
+
+import java.util.ArrayList;
+
+public class LibraryManagementSystem {
+    private ArrayList<Book> books;
+
+    public LibraryManagementSystem() {
+        books = new ArrayList<>();
+    }
+
+    public void add(Book book) {
+        books.add(book);
+    }
+
+    public void remove(String title) {
+        books.removeIf(book -> book.getTitle().equals(title));
+    }
+
+    public int size() {
+        return books.size();
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+}
+
+
+
+
+package size;
+
+import java.util.ArrayList;
+
+public class Size<T> {
+    private ArrayList<T> array;
+
+    public Size() {
+        array = new ArrayList<>();
+    }
+
+    public void add(T element) {
+        array.add(element);
+    }
+
+    public void insert(int index, T element) {
+        if (index < 0 || index > array.size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + array.size());
+        }
+        array.add(index, element);
+    }
+
+    public T remove(int index) {
+        if (index < 0 || index >= array.size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + array.size());
+        }
+        return array.remove(index);
+    }
+
+    public T get(int index) {
+        if (index < 0 || index >= array.size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + array.size());
+        }
+        return array.get(index);
+    }
+
+    public int size() {
+        return array.size();
+    }
+
+    public boolean isEmpty() {
+        return array.isEmpty();
+    }
+}
