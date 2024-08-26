@@ -1,0 +1,27 @@
+# pa add nalang siya sa Main
+
+public class Main extends javax.swing.JFrame {
+
+    public Main() {
+        initComponents();
+        removeBook();
+    }
+                        
+    private void removeBook() {
+        btn_Remove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel model = (DefaultTableModel) tbl_displayTable.getModel();
+                int selectedRow = tbl_displayTable.getSelectedRow();
+
+                if (selectedRow >= 0) {
+                    model.removeRow(selectedRow);
+
+                    // Update the number of books
+                    jLabel2.setText(String.valueOf(model.getRowCount()));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please select a book to delete", "Selection Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
