@@ -1,12 +1,4 @@
-(pa add nalang siya sa Main goiss)
-
-public class Main extends javax.swing.JFrame {
-
-    public Main() {
-        initComponents();
-        removeBook();
-    }
-                        
+              
     private void removeBook() {
         btn_Remove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
