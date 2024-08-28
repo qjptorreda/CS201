@@ -58,7 +58,7 @@ public class Main extends javax.swing.JFrame {
                     txt_Genre.setText("");
                 } else {
                     // Shows message when the user has reached the book limit
-                    JOptionPane.showMessageDialog(null, "You've reached the limit of " + numberOfBooks + " books.", "Error: Limit Reached", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You've reached the limit of " + numberOfBooks + " books." + " Please delete some books to replace them with.", "Error: Limit Reached.", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
