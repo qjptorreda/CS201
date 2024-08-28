@@ -1,0 +1,62 @@
+public class ArrayADT<T> {
+    private T[] array;
+    private int size;
+
+    @SuppressWarnings("unchecked")
+    public ArrayADT() {
+        array = (T[]) new Object[10]; // Initial capacity
+        size = 0;
+    }
+
+    public void add(T element) {
+        ensureCapacity();
+        array[size++] = element;
+    }
+
+    public void insert(int index, T element) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        ensureCapacity();
+        System.arraycopy(array, index, array, index + 1, size - index);
+        array[index] = element;
+        size++;
+    }
+
+    public T remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        T removedElement = array[index];
+        int numMoved = size - index - 1;
+        if (numMoved > 0) {
+            System.arraycopy(array, index + 1, array, index, numMoved);
+        }
+        array[--size] = null; // Clear to let GC do its work
+        return removedElement;
+    }
+
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        return array[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    private void ensureCapacity() {
+        if (size == array.length) {
+            @SuppressWarnings("unchecked")
+            T[] newArray = (T[]) new Object[array.length * 2];
+            System.arraycopy(array, 0, newArray, 0, array.length);
+            array = newArray;
+        }
+    }
+}
